@@ -1,9 +1,10 @@
 // components/ProfileInfo.js
 
-const ProfileInfo = ({ username, user }) => {
+const ProfileInfo = ({ user }) => {
+  console.log("User:", user);
   return (
     <div className="bg-gray-100 p-6 rounded-md shadow-md mb-4">
-      <h2 className="text-2xl font-bold mb-4">Welcome, {username}!</h2>
+      <h2 className="text-2xl font-bold mb-4">Welcome, {user.name}!</h2>
       <div className="flex items-center mb-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"

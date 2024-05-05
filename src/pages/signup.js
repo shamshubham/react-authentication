@@ -11,22 +11,22 @@ const Signup = ({ setUser, setIsLoggedIn }) => {
   const handleSignup = async (userData) => {
     try {
       // Call signup API with userdata
-      // const response = await fetch("/api/signup", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(userData),
-      // });
+      const response = await fetch("http://localhost:3000/api/v1/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
 
-      // if (!response.ok) {
-      //   throw new Error("Signup failed");
-      // }
-
+      if (!response.ok) {
+        throw new Error("Signup failed");
+      }
+      const responseData = await response.json;
+      console.log("Response Data: ", responseData);
       setUser({
-        name: "John Doe",
-        email: "john.doe@example.com",
-        phone: "1234567890",
+        ...responseData.data.user,
+        token: responseData.data.token,
       });
       setIsLoggedIn(true);
       router.push("/");
