@@ -18,11 +18,11 @@ const Signup = ({ setUser, setIsLoggedIn }) => {
         },
         body: JSON.stringify(userData),
       });
-
+      console.log(response);
       if (!response.ok) {
         throw new Error("Signup failed");
       }
-      const responseData = await response.json;
+      const responseData = await response.json();
       console.log("Response Data: ", responseData);
       setUser({
         ...responseData.data.user,
