@@ -1,28 +1,28 @@
 import { useState } from "react";
-
+import { useRouter } from "next/router";
 import Link from "next/link";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+
 import LoginForm from "../components/LoginForm";
 
-const Login = () => {
+const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   const [error, setError] = useState("");
 
   const handleLogin = async (credentials) => {
     try {
       // Call API login with credentials
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(credentials),
-      });
+      // const response = await fetch("/api/login", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(credentials),
+      // });
+      // if (!response.ok) {
+      //   throw new Error("Invalid Credentials");
+      // }
 
-      if (!response.ok) {
-        throw new Error("Invalid Credentials");
-      }
-
+      setIsLoggedIn(true);
+      Router.push("/");
       // Redirect to login page upon successfull login
       // You need to implement client side routing here
     } catch (error) {
@@ -32,7 +32,6 @@ const Login = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
       <main className="flex-grow">
         <div className="container mx-auto flex justify-center items-center h-full">
           <div className="bg-white p-8 rounded shadow-md max-w-md w-full">
@@ -48,7 +47,6 @@ const Login = () => {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };
