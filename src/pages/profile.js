@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import ProfileInfo from "../components/ProfileInfo";
 
-const Pofile = () => {
+const Pofile = (user) => {
   [username, setUsername] = useState("");
 
   useEffect(() => {
     // Fetch user profile data
     // You need to implement this logic
-    setUsername("example_user"); // Dummu username for demonstration
+    setUsername(user.name); // Dummu username for demonstration
   }, []);
 
   return (
@@ -18,7 +16,7 @@ const Pofile = () => {
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold mb-4">Profile Page</h1>
           <div className="bg-white p-8 rounded shadow-md">
-            <ProfileInfo username={username} />
+            <ProfileInfo username={username} user={user} />
             {/* Add profile page content here */}
           </div>
         </div>
