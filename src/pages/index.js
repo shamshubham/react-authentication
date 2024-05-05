@@ -1,10 +1,24 @@
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { RouteKind } from "next/dist/server/future/route-kind";
 
 const HomePage = () => {
+  const HomePage = ({ isLoggedIn }) => {
+    const router = useRouter();
+    useEffect(() => {
+      // Check if the user is authenticated
+      // If not then redirect to the login page
+
+      if (!isLoggedIn) {
+        router.push("/login");
+      }
+    }, [isLoggedIn, router]);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       <main
         className="
         flex-grow
