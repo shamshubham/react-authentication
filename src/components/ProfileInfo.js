@@ -1,6 +1,6 @@
 // components/ProfileInfo.js
 
-const ProfileInfo = ({ username }) => {
+const ProfileInfo = ({ username, user }) => {
   return (
     <div className="bg-gray-100 p-6 rounded-md shadow-md mb-4">
       <h2 className="text-2xl font-bold mb-4">Welcome, {username}!</h2>
@@ -19,7 +19,7 @@ const ProfileInfo = ({ username }) => {
             d="M13 10V3L4 14h7v7l9-11h-7z"
           />
         </svg>
-        <span className="text-gray-600">Email: example@example.com</span>
+        <span className="text-gray-600">Email: {user.email}</span>
       </div>
       <div className="flex items-center">
         <svg
@@ -36,7 +36,7 @@ const ProfileInfo = ({ username }) => {
             d="M5 13l4 4L19 7"
           />
         </svg>
-        <span className="text-gray-600">Phone: +1234567890</span>
+        <span className="text-gray-600">Phone: +{user.phone}</span>
       </div>
     </div>
   );

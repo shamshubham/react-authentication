@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-
 import LoginForm from "../components/LoginForm";
+import { emitWarning } from "process";
 
-const Login = ({ isLoggedIn, setIsLoggedIn }) => {
+const Login = ({ setIsLoggedIn, setUser }) => {
+  const router = useRouter();
   const [error, setError] = useState("");
 
   const handleLogin = async (credentials) => {
@@ -22,6 +23,11 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
       // }
 
       setIsLoggedIn(true);
+      setUser({
+        name: "John Doe",
+        email: "john.doe@example.com",
+        phone: "1234567890",
+      });
       Router.push("/");
       // Redirect to login page upon successfull login
       // You need to implement client side routing here

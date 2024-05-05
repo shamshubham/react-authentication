@@ -3,7 +3,7 @@ import Link from "next/link";
 import SignupForm from "../components/SignupForm";
 import { useRouter } from "next/router";
 
-const Signup = ({ isLoggedIn, setIsLoggedIn }) => {
+const Signup = ({ setUser, setIsLoggedIn }) => {
   const router = useRouter();
 
   const [error, setError] = useState("");
@@ -23,6 +23,11 @@ const Signup = ({ isLoggedIn, setIsLoggedIn }) => {
       //   throw new Error("Signup failed");
       // }
 
+      setUser({
+        name: "John Doe",
+        email: "john.doe@example.com",
+        phone: "1234567890",
+      });
       setIsLoggedIn(true);
       router.push("/");
       // Redirect to login page upon successfull signup
