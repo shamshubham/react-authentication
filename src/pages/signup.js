@@ -22,7 +22,7 @@ const Signup = ({ setUser, setIsLoggedIn }) => {
       if (!response.ok) {
         throw new Error("Signup failed");
       }
-      const responseData = await response.json;
+      const responseData = await response.json();
       console.log("Response Data: ", responseData);
       setUser({
         ...responseData.data.user,
