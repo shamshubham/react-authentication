@@ -29,7 +29,8 @@ const Login = ({ setIsLoggedIn, setUser }) => {
         token: responseData.data.token,
       });
       setIsLoggedIn(true);
-      Router.push("/");
+      console.log(credentials);
+      router.push("/");
       // Redirect to login page upon successfull login
       // You need to implement client side routing here
     } catch (error) {
@@ -44,7 +45,7 @@ const Login = ({ setIsLoggedIn, setUser }) => {
           <div className="bg-white p-8 rounded shadow-md max-w-md w-full">
             <h1 className="text-3xl font-bold mb-4">Login</h1>
             {error && <p className="text-red-500 mb-4">{error}</p>}
-            <LoginForm onLogin={handleLogin} />
+            <LoginForm onlogin={handleLogin} />
             <p className="mt-4 text-sm">
               Don&apos;t have an account?{" "}
               <Link href="/signup">
